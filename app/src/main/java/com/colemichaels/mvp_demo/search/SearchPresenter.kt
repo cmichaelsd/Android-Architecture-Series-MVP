@@ -29,18 +29,15 @@ class SearchPresenter(
         .observeOn(AndroidSchedulers.mainThread())
         .subscribeWith(object : DisposableObserver<TmdbResponse>() {
             override fun onNext(t: TmdbResponse) {
-                Log.d(TAG, "OnNext ${t.totalResults}")
                 viewInterface.displayResult(t)
             }
 
             override fun onError(e: Throwable) {
-                Log.e(TAG, "Error fetching movie data.", e)
+                e.printStackTrace()
                 viewInterface.displayError("Error fetching movie data.")
             }
 
-            override fun onComplete() {
-                Log.d(TAG, "Completed")
-            }
+            override fun onComplete() {}
         })
 
         compositeDisposable.add(searchResultsDisposable)

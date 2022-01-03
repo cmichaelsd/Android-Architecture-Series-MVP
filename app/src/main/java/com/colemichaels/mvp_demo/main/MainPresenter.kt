@@ -36,7 +36,7 @@ class MainPresenter(
                 }
 
                 override fun onComplete() {
-                    Log.d(TAG, "Completed")
+                    //Log.d(TAG, "Completed")
                 }
             })
         compositeDisposable.add(myMoviesDisposable)
@@ -45,7 +45,7 @@ class MainPresenter(
     override fun onDelete(selectMovies: HashSet<Movie>) {
         for (movie in selectMovies) dataSource.delete(movie)
         if (selectMovies.size == 1) viewInterface.displayMessage("Movie deleted.")
-        else if (selectMovies.size > 1) viewInterface.displayMessage("Movies deleted")
+        else if (selectMovies.size > 1) viewInterface.displayMessage("Movies deleted.")
     }
 
     override fun stop() {
